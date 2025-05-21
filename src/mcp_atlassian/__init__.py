@@ -278,7 +278,7 @@ def main(
     if click_ctx and was_option_provided(click_ctx, "jira_projects_filter"):
         os.environ["JIRA_PROJECTS_FILTER"] = jira_projects_filter
 
-    from mcp_atlassian.servers import main_mcp
+    from api import main_mcp
 
     run_kwargs = {
         "transport": final_transport,

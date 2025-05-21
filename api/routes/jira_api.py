@@ -2,13 +2,12 @@ import json
 import logging
 from typing import Any
 
+from dependencies import AppContext, get_current_user_context
 from fastapi import APIRouter, Body, Depends, Path, Query
 from requests.exceptions import HTTPError
 
 from mcp_atlassian.exceptions import MCPAtlassianAuthenticationError
 from mcp_atlassian.jira.constants import DEFAULT_READ_JIRA_FIELDS
-from mcp_atlassian.servers.context import AppContext
-from mcp_atlassian.servers.dependencies import get_current_user_context
 
 router = APIRouter(prefix="/jira", tags=["jira"])
 logger = logging.getLogger(__name__)

@@ -43,7 +43,7 @@ from mcp_atlassian.models.confluence import (
     ConfluencePage,
 )
 from mcp_atlassian.models.jira import JiraIssueLinkType
-from mcp_atlassian.servers import main_mcp
+from api import main_mcp
 
 
 # Resource tracking for cleanup

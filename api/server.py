@@ -4,16 +4,15 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Any
 
+from dependencies import AppContext, get_current_user_context
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI
 from fastapi.security import HTTPBasic
 from fastapi_mcp import FastApiMCP
+from routes import confluence_api, jira_api
 
 from mcp_atlassian.confluence.config import ConfluenceConfig
 from mcp_atlassian.jira.config import JiraConfig
-from mcp_atlassian.servers.context import AppContext
-from mcp_atlassian.servers.dependencies import get_current_user_context
-from mcp_atlassian.servers.routes import confluence, jira
 from mcp_atlassian.utils.environment import get_available_services
 from mcp_atlassian.utils.io import is_read_only_mode
 from mcp_atlassian.utils.tools import get_enabled_tools
@@ -134,8 +133,8 @@ async def read_users_me(
 
 
 # Include the Confluence router
-app.include_router(confluence.router)
-app.include_router(jira.router)
+app.include_router(confluence_api.router)
+app.include_router(jira_api.router)
 mcp.mount()
 
 logger.info("FastAPI application configured. MCP mounting complete.")

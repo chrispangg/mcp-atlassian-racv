@@ -1,10 +1,8 @@
 import logging
 from typing import Annotated
 
+from dependencies import AppContext, get_current_user_context
 from fastapi import APIRouter, Body, Depends, HTTPException, Path, Query
-
-from mcp_atlassian.servers.context import AppContext
-from mcp_atlassian.servers.dependencies import get_current_user_context
 
 logger = logging.getLogger(__name__)
 
